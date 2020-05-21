@@ -8,16 +8,14 @@ import org.w3c.dom.CDATASection;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BonusServiceTest {
-    @ParameterizedTest
-    @CsvFileSource(resources = {"/data.csv"},delimiter = '|')
 
+    @ParameterizedTest
+    @CsvFileSource(resources = {"/data.csv"}, delimiter = '|')
     void shouldCalculate(String test, long amount, boolean registered, long expected) {
         BonusService service = new BonusService();
 
-        // вызываем целевой метод:
         long actual = service.calculate(amount, registered);
 
-        // производим проверку (сравниваем ожидаемый и фактический):
         assertEquals(expected, actual);
     }
 }
